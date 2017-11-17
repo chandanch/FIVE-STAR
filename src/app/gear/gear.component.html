@@ -1,3 +1,4 @@
+<h2>Gear component</h2>
 <select [(ngModel)]="selectedGear" (ngModelChange)="gearChange($event)">
   <option *ngFor="let gear of gears" [ngValue]="gear">{{gear}}</option>
 </select>
