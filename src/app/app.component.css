@@ -9,3 +9,7 @@
   padding: 4px;
   margin-top: 14px;
 }
+
+textarea {
+  font-size: 1.2em;
+}

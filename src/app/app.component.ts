@@ -16,6 +16,8 @@ export class AppComponent implements OnInit {
   cardinalCoordinates: Array<any> = [];
   myForm: FormGroup;
   isValidCardinal = true;
+  showsuccess = false;
+  invalidCardinals: Array<string> = [];
 
   constructor(private fb: FormBuilder) {
     // this.myForm = fb.group()
@@ -49,11 +51,27 @@ export class AppComponent implements OnInit {
 
   submit(value) {
     console.log(value);
-    // console.log(this.checkValidity(value.coordinates));
-    if (!this.checkValidity(value.coordinates)) {
+    // reset the invalid
+    this.invalidCardinals.length = 0;
+    // reset valid and invalid flags
+    this.showsuccess = false;
+    this.isValidCardinal = true;
+    console.log(value.coordinates.split('\n'));
+    const coordinates = value.coordinates.split('\n');
+    [].forEach.call(coordinates, (coordinate) => {
+      if (!this.checkValidity(coordinate)) {
+        this.invalidCardinals.push(coordinate);
+      }
+    });
+    this.showValidityMessage();
+  }
+
+  showValidityMessage() {
+    if (this.invalidCardinals.length > 0) {
       this.isValidCardinal = false;
     } else {
       this.isValidCardinal = true;
+      this.showsuccess = true;
     }
   }
 
