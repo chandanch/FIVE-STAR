@@ -56,9 +56,11 @@ export class AppComponent implements OnInit {
     // reset valid and invalid flags
     this.showsuccess = false;
     this.isValidCardinal = true;
-    console.log(value.coordinates.split('\n'));
+    // split the cardinal coordinates by newline 
     const coordinates = value.coordinates.split('\n');
+    // iterate through the coordinates to check the validity
     [].forEach.call(coordinates, (coordinate) => {
+      // if invalid add to `invalidCardinals` array
       if (!this.checkValidity(coordinate)) {
         this.invalidCardinals.push(coordinate);
       }
@@ -66,6 +68,9 @@ export class AppComponent implements OnInit {
     this.showValidityMessage();
   }
 
+  /**
+   * @desc show appropriate validity message
+   */
   showValidityMessage() {
     if (this.invalidCardinals.length > 0) {
       this.isValidCardinal = false;
