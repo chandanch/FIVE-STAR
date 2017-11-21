@@ -6,13 +6,15 @@ import { AppComponent } from './app.component';
 import { GearComponent } from './gear/gear.component';
 import { EngineComponent } from './engine/engine.component';
 import {FormsModule} from "@angular/forms";
+import { BolderPipe } from './bolder.pipe';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     GearComponent,
-    EngineComponent
+    EngineComponent,
+    BolderPipe
   ],
   imports: [
     BrowserModule,

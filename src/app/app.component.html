@@ -1,11 +1,18 @@
-<article>
+<article *ngIf="hidegears">
   <section>
     <h2>Handling gear and engine</h2>
   </section>
+  <div class="gear-container">
+    <app-gear (OnGearChange)="onGearChange($event)"></app-gear>
+  </div>
+  <div class="engine-container">
+    <app-engine></app-engine>
+  </div>
 </article>
-<div class="gear-container">
-  <app-gear (OnGearChange)="onGearChange($event)"></app-gear>
-</div>
-<div class="engine-container">
-  <app-engine></app-engine>
-</div>
+<article>
+  <h2>List of coordinates</h2>
+  <ul>
+    <li *ngFor="let coordinate of cardinalCoordinates" [innerHtml]="coordinate.value | bolder">
+    </li>
+  </ul>
+</article>
