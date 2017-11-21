@@ -5,8 +5,6 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class BolderPipe implements PipeTransform {
 
-  private transformedValue;
-
   transform(value: string, args?: any): any {
     let firstCardinalValue;
     let secondCardinalValue;
