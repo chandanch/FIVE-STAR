@@ -59,7 +59,7 @@ export class AppComponent implements OnInit {
 
   checkValidity(cardinalCoordinates: string): boolean {
     console.log('dd', cardinalCoordinates);
-    const regex = /[NE]{2}[0-9]{2}.[0-9]{2}\/\-?[0-9]{2}.[0-9]{2,},\s[SW]{2}[0-9]{2}.[0-9]{2}\/\-?[0-9]{2,3}.[0-9]{2,}/g;
+    const regex = /[NE]{2}[0-9]{2}.[0-9]{2}\/-?[0-9]{2}.[0-9]{2,},\s[SW]{2}[0-9]{2}.[0-9]{2}\/-?[0-9]{2,3}.[0-9]{2,}/g;
      return regex.test(cardinalCoordinates);
   }
 }
