@@ -1,5 +1,6 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {EngineComponent} from './engine/engine.component';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-root',
@@ -13,6 +14,15 @@ export class AppComponent implements OnInit {
   public hidegears = false;
   sampleText = 'hello';
   cardinalCoordinates: Array<any> = [];
+  myForm: FormGroup;
+  isValidCardinal = true;
+
+  constructor(private fb: FormBuilder) {
+    // this.myForm = fb.group()
+    this.myForm = this.fb.group({
+      coordinates: [null, Validators.compose([Validators.required, Validators.minLength(4)])]
+    });
+  }
 
   ngOnInit() {
     console.log('Root component init');
@@ -35,5 +45,21 @@ export class AppComponent implements OnInit {
   onGearChange(gear: string) {
     console.log('Event gear change', gear);
     this.engine.setGearStatus(gear);
+  }
+
+  submit(value) {
+    console.log(value);
+    // console.log(this.checkValidity(value.coordinates));
+    if (!this.checkValidity(value.coordinates)) {
+      this.isValidCardinal = false;
+    } else {
+      this.isValidCardinal = true;
+    }
+  }
+
+  checkValidity(cardinalCoordinates: string): boolean {
+    console.log('dd', cardinalCoordinates);
+    const regex = /[NE]{2}[0-9]{2}.[0-9]{2}\/\-?[0-9]{2}.[0-9]{2,},\s[SW]{2}[0-9]{2}.[0-9]{2}\/\-?[0-9]{2,3}.[0-9]{2,}/g;
+     return regex.test(cardinalCoordinates);
   }
 }

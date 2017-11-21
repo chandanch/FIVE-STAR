@@ -15,4 +15,16 @@
     <li *ngFor="let coordinate of cardinalCoordinates" [innerHtml]="coordinate.value | bolder">
     </li>
   </ul>
+  <section>
+    <form [formGroup]="myForm" novalidate (ngSubmit)="submit(myForm.value)">
+      <textarea name="coordinates" [formControl]="myForm.controls['coordinates']" required></textarea>
+      <div *ngIf="myForm.controls['coordinates'].hasError('required') && myForm.controls['coordinates'].touched" style="color: red;">Please enter text</div>
+      <div *ngIf="myForm.controls['coordinates'].hasError('minlength')" style="color: red;">Please enter more than 4 characters</div>
+      <div *ngIf="!isValidCardinal" style="color: crimson;">
+        Please enter valid cardinal coordinates
+      </div>
+      <button [disabled]="!myForm.valid">Submit</button>
+    </form>
+    {{myForm.valid}}
+  </section>
 </article>

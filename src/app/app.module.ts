@@ -5,7 +5,7 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { GearComponent } from './gear/gear.component';
 import { EngineComponent } from './engine/engine.component';
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { BolderPipe } from './bolder.pipe';
 
 
@@ -18,7 +18,8 @@ import { BolderPipe } from './bolder.pipe';
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
