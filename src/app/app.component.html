@@ -9,6 +9,9 @@
     <app-engine></app-engine>
   </div>
 </article>
+<br>
+<br>
+<br>
 <article>
   <h2>List of coordinates</h2>
   <ul>
@@ -18,8 +21,12 @@
   <section>
     <form [formGroup]="myForm" novalidate (ngSubmit)="submit(myForm.value)">
       <textarea name="coordinates" [formControl]="myForm.controls['coordinates']" cols="50" rows="8" required></textarea>
-      <div *ngIf="myForm.controls['coordinates'].hasError('required') && myForm.controls['coordinates'].touched" style="color: red;">Please enter text</div>
-      <div *ngIf="myForm.controls['coordinates'].hasError('minlength')" style="color: red;">Please enter more than 4 characters</div>
+      <div *ngIf="myForm.controls['coordinates'].hasError('required') && myForm.controls['coordinates'].touched" style="color: red;">
+        Please enter text
+      </div>
+      <div *ngIf="myForm.controls['coordinates'].hasError('minlength')" style="color: red;">
+        Please enter more than 4 characters
+      </div>
       <div *ngIf="!isValidCardinal" style="color: crimson;">
         The following cardinal coordinates are invalid:
         <ul>

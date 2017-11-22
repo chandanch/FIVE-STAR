@@ -41,6 +41,15 @@ export class AppComponent implements OnInit {
       {
         value: 'NE24.96/81.06, SW24.24/-82.34'
       },
+      {
+        value: 'NE45.06/-70.31, SW38.03/-76.73'
+      },
+      {
+        value: 'NE47.61/-66.62, SW43.55/-70.31'
+      },
+      {
+        value: 'NE21.96/-154.54, SW18.66/158.54'
+      },
     );
   }
 
