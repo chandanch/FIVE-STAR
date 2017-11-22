@@ -102,22 +102,30 @@ export class AppComponent implements OnInit {
     this.inputCoordinates = this.cleanupInput(this.inputCoordinates);
     console.log(this.inputCoordinates);
     editable.textContent = '';
-    // const span = document.createElement('span');
-    // const text = document.createTextNode('Hello');
-    // span.appendChild(text);
-
+    // iterate through the input coordinates
     [].forEach.call(this.inputCoordinates, (inputcoordinate) => {
+      // check the validity of each coordinates
       if (this.checkValidity(inputcoordinate)) {
+        // if valid
         this.markValidCoordinates(inputcoordinate);
       } else {
+        // if invalid
        this.markInvalidCoordinates(inputcoordinate);
       }
     });
   }
 
+  /**
+   * @desc 1.get the editable container
+   * 2.create a span node 3. add color to span text
+   * 3. create a line break node
+   * 4. append the span node and line break(so that new nodes are added in new line)
+   * @param inputcoordinate 
+   */
   markValidCoordinates(inputcoordinate) {
     const editable = (<HTMLDivElement>document.getElementById('editable'));
     const span = document.createElement('span');
+    // text color color for valid coordinates
     span.style.color = 'green';
     const text = document.createTextNode(inputcoordinate);
     span.appendChild(text);
@@ -127,10 +135,18 @@ export class AppComponent implements OnInit {
     editable.appendChild(br);
   }
 
+  /**
+   * @desc 1.get the editable container
+   * 2.create a span node 3. add color to span text
+   * 3. create a line break node
+   * 4. append the span node and line break(so that new nodes are added in new line)
+   * @param inputcoordinate 
+   */
   markInvalidCoordinates(inputcoordinate) {
     const editable = (<HTMLDivElement>document.getElementById('editable'));
     const span = document.createElement('span');
     const br = document.createElement('br');
+    // text color red for invalid coordinates
     span.style.color = 'red';
     const text = document.createTextNode(inputcoordinate);
     span.appendChild(text);
@@ -140,6 +156,10 @@ export class AppComponent implements OnInit {
 
   }
 
+  /**
+   * @desc clear all empty inputs and redundant new line
+   * @param inputCoordinates 
+   */
   cleanupInput(inputCoordinates: Array<string>) {
     for (let i = 0; i < inputCoordinates.length; i++) {
       if (inputCoordinates[i] === '') {
