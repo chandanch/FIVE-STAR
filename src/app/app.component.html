@@ -18,7 +18,7 @@
     <li *ngFor="let coordinate of cardinalCoordinates" [innerHtml]="coordinate.value | bolder">
     </li>
   </ul>
-  <section>
+  <section hidden="true">
     <form [formGroup]="myForm" novalidate (ngSubmit)="submit(myForm.value)">
       <textarea name="coordinates" [formControl]="myForm.controls['coordinates']" cols="50" rows="8" required></textarea>
       <div *ngIf="myForm.controls['coordinates'].hasError('required') && myForm.controls['coordinates'].touched" style="color: red;">
@@ -41,5 +41,11 @@
       <button [disabled]="!myForm.valid">Submit</button>
     </form>
     {{myForm.valid}}
+  </section>
+  <section>
+    <h2>Enter cardinal coordinates</h2>
+    <div id="editable" #editable contenteditable="true" class="editable-content" (focus)="editable.style.color='white'"> 
+    </div>
+    <button (click)="submitData()">Submit</button>  
   </section>
 </article>

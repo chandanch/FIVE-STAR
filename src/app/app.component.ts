@@ -18,6 +18,7 @@ export class AppComponent implements OnInit {
   isValidCardinal = true;
   showsuccess = false;
   invalidCardinals: Array<string> = [];
+  inputCoordinates: Array<string>;
 
   constructor(private fb: FormBuilder) {
     // this.myForm = fb.group()
@@ -93,5 +94,47 @@ export class AppComponent implements OnInit {
     console.log('dd', cardinalCoordinates);
     const regex = /[NE]{2}[0-9]{2}.[0-9]{2}\/-?[0-9]{2}.[0-9]{2,},\s[SW]{2}[0-9]{2}.[0-9]{2}\/-?[0-9]{2,3}.[0-9]{2,}/g;
      return regex.test(cardinalCoordinates);
+  }
+
+  submitData() {
+    const editable = (<HTMLDivElement>document.getElementById('editable'));
+    this.inputCoordinates = editable.outerText.split('\n');
+    this.inputCoordinates = this.cleanupInput(this.inputCoordinates);
+    console.log(this.inputCoordinates);
+    editable.textContent = '';
+    // const span = document.createElement('span');
+    // const text = document.createTextNode('Hello');
+    // span.appendChild(text);
+
+    [].forEach.call(this.inputCoordinates, (inputcoordinate) => {
+      if (this.checkValidity(inputcoordinate)) {
+        const span = document.createElement('span');
+        span.style.color = 'green';
+        const text = document.createTextNode(inputcoordinate);
+        span.appendChild(text);
+
+        const br = document.createElement('br');
+        editable.appendChild(span);
+        editable.appendChild(br);
+      } else {
+        const span = document.createElement('span');
+        span.style.color = 'red';
+        const text = document.createTextNode(inputcoordinate);
+        span.appendChild(text);
+
+        const br = document.createElement('br');
+        editable.appendChild(span);
+        editable.appendChild(br);
+      }
+    });
+  }
+
+  cleanupInput(inputCoordinates: Array<string>) {
+    for (let i = 0; i < inputCoordinates.length; i++) {
+      if (inputCoordinates[i] === '') {
+        inputCoordinates.splice(i, 1);
+      }
+    }
+    return inputCoordinates;
   }
 }
