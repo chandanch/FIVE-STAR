@@ -108,25 +108,36 @@ export class AppComponent implements OnInit {
 
     [].forEach.call(this.inputCoordinates, (inputcoordinate) => {
       if (this.checkValidity(inputcoordinate)) {
-        const span = document.createElement('span');
-        span.style.color = 'green';
-        const text = document.createTextNode(inputcoordinate);
-        span.appendChild(text);
-
-        const br = document.createElement('br');
-        editable.appendChild(span);
-        editable.appendChild(br);
+        this.markValidCoordinates(inputcoordinate);
       } else {
-        const span = document.createElement('span');
-        span.style.color = 'red';
-        const text = document.createTextNode(inputcoordinate);
-        span.appendChild(text);
-
-        const br = document.createElement('br');
-        editable.appendChild(span);
-        editable.appendChild(br);
+       this.markInvalidCoordinates(inputcoordinate);
       }
     });
+  }
+
+  markValidCoordinates(inputcoordinate) {
+    const editable = (<HTMLDivElement>document.getElementById('editable'));
+    const span = document.createElement('span');
+    span.style.color = 'green';
+    const text = document.createTextNode(inputcoordinate);
+    span.appendChild(text);
+    const br = document.createElement('br');
+    
+    editable.appendChild(span);
+    editable.appendChild(br);
+  }
+
+  markInvalidCoordinates(inputcoordinate) {
+    const editable = (<HTMLDivElement>document.getElementById('editable'));
+    const span = document.createElement('span');
+    const br = document.createElement('br');
+    span.style.color = 'red';
+    const text = document.createTextNode(inputcoordinate);
+    span.appendChild(text);
+
+    editable.appendChild(span);
+    editable.appendChild(br);
+
   }
 
   cleanupInput(inputCoordinates: Array<string>) {
