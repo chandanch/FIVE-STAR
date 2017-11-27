@@ -14,10 +14,11 @@
 <br>
 <article>
   <h2>List of coordinates</h2>
-  <ul>
-    <li *ngFor="let coordinate of cardinalCoordinates" [innerHtml]="coordinate.value | bolder">
+  <ol>
+    <li *ngFor="let coordinate of cardinalCoordinates; let i = index;" value="{{3 + 3 + i}}" [innerHtml]="coordinate.value | bolder">
+      {{i}}
     </li>
-  </ul>
+  </ol>
   <section hidden="true">
     <form [formGroup]="myForm" novalidate (ngSubmit)="submit(myForm.value)">
       <textarea name="coordinates" [formControl]="myForm.controls['coordinates']" cols="50" rows="8" required></textarea>
@@ -44,8 +45,8 @@
   </section>
   <section>
     <h2>Enter cardinal coordinates</h2>
-    <div id="editable" #editable contenteditable="true" class="editable-content" (focus)="editable.style.color='white'"> 
+    <div id="editable" #editable contenteditable="true" class="editable-content" (focus)="editable.style.color='white'">
     </div>
-    <button (click)="submitData()">Submit</button>  
+    <button (click)="submitData()">Submit</button>
   </section>
 </article>
