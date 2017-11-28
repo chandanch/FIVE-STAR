@@ -1,3 +1,4 @@
+import { Meta } from './model/meta';
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {EngineComponent} from './engine/engine.component';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
@@ -19,12 +20,22 @@ export class AppComponent implements OnInit {
   showsuccess = false;
   invalidCardinals: Array<string> = [];
   inputCoordinates: Array<string>;
+  meta: Meta;
+  names: string[];
+  names2;
 
   constructor(private fb: FormBuilder) {
     // this.myForm = fb.group()
     this.myForm = this.fb.group({
       coordinates: [null, Validators.compose([Validators.required, Validators.minLength(4)])]
     });
+    this.meta = {
+      name: '',
+      description: '',
+      id: 0,
+    }
+    this.names = ['e','e'];
+    this.names2 = this.names;
   }
 
   ngOnInit() {
@@ -52,6 +63,9 @@ export class AppComponent implements OnInit {
         value: 'NE21.96/-154.54, SW18.66/158.54'
       },
     );
+    this.meta.name = "chan";
+    this.meta.description = "dd";
+    console.log(this.meta);
   }
 
   onGearChange(gear: string) {
