@@ -182,4 +182,19 @@ export class AppComponent implements OnInit {
     }
     return inputCoordinates;
   }
+
+  pasteText(e) {
+    //text.stopPropagation();
+    var pastedText = undefined;
+    
+    if ((<any>window).clipboardData && (<any>window).clipboardData.getData) { // IE
+      pastedText = (<any>window).clipboardData.getData('Text');
+    } else if (e.clipboardData && e.clipboardData.getData) {
+      pastedText = e.clipboardData.getData('text/plain');
+    }
+    const editable = (<HTMLDivElement>document.getElementById('editable'));
+    console.log(editable.outerText);
+    // editable.innerHTML = editable.outerText+pastedText;
+    return false; 
+  }
 }

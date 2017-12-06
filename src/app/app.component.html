@@ -49,7 +49,10 @@
       <span *ngIf="cardinalCoordinates.length;">No. of coordinates{{cardinalCoordinates.length}}</span>
       <span *ngIf="!cardinalCoordinates.length;">Add coordinates</span>
     </p>
-    <div id="editable" #editable contenteditable="true" class="editable-content" (focus)="editable.style.color='white'">
+    <div id="editable" #editable contenteditable="true" 
+      class="editable-content" 
+      (focus)="editable.style.color='white'" 
+      (paste)="pasteText($event)">
     </div>
     <button (click)="submitData()">Submit</button>
   </section>
