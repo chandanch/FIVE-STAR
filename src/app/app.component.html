@@ -14,11 +14,11 @@
 <br>
 <article>
   <h2>List of coordinates</h2>
-  <ol>
-    <li *ngFor="let coordinate of cardinalCoordinates; let i = index;" value="{{3 + 3 + i}}" [innerHtml]="coordinate.value | bolder">
+  <ul>
+    <li class="cods-list" *ngFor="let coordinate of cardinalCoordinates; let i = index;"  [innerHtml]="coordinate.value | bolder">
       {{i}}
     </li>
-  </ol>
+  </ul>
   <section hidden="true">
     <form [formGroup]="myForm" novalidate (ngSubmit)="submit(myForm.value)">
       <textarea name="coordinates" [formControl]="myForm.controls['coordinates']" cols="50" rows="8" required></textarea>
@@ -30,11 +30,11 @@
       </div>
       <div *ngIf="!isValidCardinal" style="color: crimson;">
         The following cardinal coordinates are invalid:
-        <ul>
+        <!-- <ul> -->
           <li *ngFor="let cardinal of invalidCardinals">
             {{cardinal}}
           </li>
-        </ul>
+        <!-- </ul> -->
       </div>
       <div *ngIf="showsuccess" style="color: green;">
         Valid cardinal coordinates
@@ -51,7 +51,7 @@
     </p>
     <div id="editable" #editable contenteditable="true" 
       class="editable-content" 
-      (focus)="editable.style.color='white'" 
+      (focus)="editable.style.color='white'"
       (paste)="pasteText($event)">
     </div>
     <button (click)="submitData()">Submit</button>

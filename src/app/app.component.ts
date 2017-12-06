@@ -185,16 +185,29 @@ export class AppComponent implements OnInit {
 
   pasteText(e) {
     //text.stopPropagation();
-    var pastedText = undefined;
+    // var pastedText = undefined;
     
-    if ((<any>window).clipboardData && (<any>window).clipboardData.getData) { // IE
-      pastedText = (<any>window).clipboardData.getData('Text');
-    } else if (e.clipboardData && e.clipboardData.getData) {
-      pastedText = e.clipboardData.getData('text/plain');
-    }
-    const editable = (<HTMLDivElement>document.getElementById('editable'));
-    console.log(editable.outerText);
-    // editable.innerHTML = editable.outerText+pastedText;
-    return false; 
+    // if ((<any>window).clipboardData && (<any>window).clipboardData.getData) { // IE
+    //   pastedText = (<any>window).clipboardData.getData('Text');
+    // } else if (e.clipboardData && e.clipboardData.getData) {
+    //   pastedText = e.clipboardData.getData('text/plain');
+    // }
+    // const editable = (<HTMLDivElement>document.getElementById('editable'));
+    // console.log(editable.outerText);
+    // // editable.innerHTML = editable.outerText+pastedText;
+    // return false; 
+    this.removeHtml();
+  }
+
+  removeHtml() {
+    const ediv = (<HTMLDivElement>document.getElementById('editable'));
+    setTimeout(function () {
+      const text1 = ediv.innerText.replace(/\n/g, "");
+      const text2 = ediv.innerHTML.replace(/<br>/g, "");
+
+      if (text1 != text2) {
+        ediv.innerText = ediv.innerText;
+      }
+    }, 1);
   }
 }
