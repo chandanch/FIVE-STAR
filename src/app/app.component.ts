@@ -203,7 +203,9 @@ export class AppComponent implements OnInit {
     const ediv = (<HTMLDivElement>document.getElementById('editable'));
     setTimeout(function () {
       const text1 = ediv.innerText.replace(/\n/g, "");
+      // console.log(text1);
       const text2 = ediv.innerHTML.replace(/<br>/g, "");
+      // console.log(text2);
 
       if (text1 != text2) {
         ediv.innerText = ediv.innerText;
