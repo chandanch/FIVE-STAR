@@ -105,8 +105,9 @@ export class AppComponent implements OnInit {
   }
 
   checkValidity(cardinalCoordinates: string): boolean {
+    cardinalCoordinates = cardinalCoordinates.replace(/\s/, "");
     console.log('dd', cardinalCoordinates);
-    const regex = /[NE]{2}[0-9]{2}.[0-9]{2}\/-?[0-9]{2}.[0-9]{2,},\s[SW]{2}[0-9]{2}.[0-9]{2}\/-?[0-9]{2,3}.[0-9]{2,}/g;
+    const regex = /[NE]{2}[0-9]{2}.[0-9]{2}\/-?[0-9]{2}.[0-9]{2,},\s?[SW]{2}[0-9]{2}.[0-9]{2}\/-?[0-9]{2,3}.[0-9]{2,}/g;
      return regex.test(cardinalCoordinates);
   }
 
@@ -185,15 +186,15 @@ export class AppComponent implements OnInit {
 
   pasteText(e) {
     //text.stopPropagation();
-    // var pastedText = undefined;
+     var pastedText = undefined;
     
-    // if ((<any>window).clipboardData && (<any>window).clipboardData.getData) { // IE
-    //   pastedText = (<any>window).clipboardData.getData('Text');
-    // } else if (e.clipboardData && e.clipboardData.getData) {
-    //   pastedText = e.clipboardData.getData('text/plain');
-    // }
-    // const editable = (<HTMLDivElement>document.getElementById('editable'));
-    // console.log(editable.outerText);
+    if ((<any>window).clipboardData && (<any>window).clipboardData.getData) { // IE
+      pastedText = (<any>window).clipboardData.getData('Text');
+    } else if (e.clipboardData && e.clipboardData.getData) {
+      pastedText = e.clipboardData.getData('text/plain');
+    }
+    const editable = (<HTMLDivElement>document.getElementById('editable'));
+    console.log(editable.outerText);
     // // editable.innerHTML = editable.outerText+pastedText;
     // return false; 
     this.removeHtml();
