@@ -24,6 +24,7 @@ export class AppComponent implements OnInit {
   meta: Meta;
   names: string[];
   names2;
+  highLightColor = 'green';
 
   constructor(private fb: FormBuilder) {
     // this.myForm = fb.group()
@@ -35,7 +36,7 @@ export class AppComponent implements OnInit {
       description: '',
       id: 0,
     }
-    this.names = ['e','e'];
+    this.names = ['e', 'e'];
     this.names2 = this.names;
   }
 
@@ -64,8 +65,8 @@ export class AppComponent implements OnInit {
         value: 'NE21.96/-154.54, SW18.66/158.54'
       },
     );
-    this.meta.name = "chan";
-    this.meta.description = "dd";
+    this.meta.name = 'chan';
+    this.meta.description = 'dd';
     console.log(this.meta);
 
      const editable = (<HTMLDivElement>document.getElementById('editable'));
@@ -110,7 +111,7 @@ export class AppComponent implements OnInit {
   }
 
   checkValidity(cardinalCoordinates: string): boolean {
-    cardinalCoordinates = cardinalCoordinates.replace(/\s/, "");
+    cardinalCoordinates = cardinalCoordinates.replace(/\s/, '');
     console.log('dd', cardinalCoordinates);
     const regex = /[NE]{2}[0-9]{2}.[0-9]{2}\/-?[0-9]{2}.[0-9]{2,},\s?[SW]{2}[0-9]{2}.[0-9]{2}\/-?[0-9]{2,3}.[0-9]{2,}/g;
      return regex.test(cardinalCoordinates);
@@ -190,8 +191,8 @@ export class AppComponent implements OnInit {
   }
 
   pasteText(e) {
-    //text.stopPropagation();
-     var pastedText = undefined;
+    // text.stopPropagation();
+     let pastedText;
     
     if ((<any>window).clipboardData && (<any>window).clipboardData.getData) { // IE
       pastedText = (<any>window).clipboardData.getData('Text');
@@ -208,12 +209,12 @@ export class AppComponent implements OnInit {
   removeHtml() {
     const ediv = (<HTMLDivElement>document.getElementById('editable'));
     setTimeout(function () {
-      const text1 = ediv.innerText.replace(/\n/g, "");
+      const text1 = ediv.innerText.replace(/\n/g, '');
       // console.log(text1);
-      const text2 = ediv.innerHTML.replace(/<br>/g, "");
+      const text2 = ediv.innerHTML.replace(/<br>/g, '');
       // console.log(text2);
 
-      if (text1 != text2) {
+      if (text1 !== text2) {
         ediv.innerText = ediv.innerText;
       }
     }, 1);
