@@ -61,4 +61,14 @@
     <p [appHighlight]="highLightColor">Hover to highlight the text</p>
     <p appHighlight defaultHighlightColor="blue">Built using Attribute directive</p>
   </section>
+  <section>
+    <div *ngIf="true">
+      <h3>Visible Content</h3>
+      <p>This content is visible and availalble in the dom</p>
+    </div>
+    <div *ngIf="false">
+      <h3>InVisible Content</h3>
+      <p>This content is not visible and not availalble in the dom</p>
+    </div>
+  </section>
 </article>
