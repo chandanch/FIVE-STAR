@@ -71,4 +71,13 @@
       <p>This content is not visible and not availalble in the dom</p>
     </div>
   </section>
+  <section>
+    <h2>Custom structural directives</h2>
+    <div *appUnless="showDiv">
+      <p style="background-color: green;">This will appear until the condition is false </p>
+    </div>
+    <div *appUnless="!showDiv">
+        <p style="background-color: yellow;">This will appear when the condition is true </p>
+    </div>
+  </section>
 </article>

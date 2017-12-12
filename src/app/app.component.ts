@@ -25,6 +25,7 @@ export class AppComponent implements OnInit {
   names: string[];
   names2;
   highLightColor = 'green';
+  showDiv = false;
 
   constructor(private fb: FormBuilder) {
     // this.myForm = fb.group()
@@ -72,6 +73,10 @@ export class AppComponent implements OnInit {
      const editable = (<HTMLDivElement>document.getElementById('editable'));
     // editable.textContent = "Enter Coordinates";
      editable.classList.add('editable-content');
+
+     setTimeout(() => {
+       this.showDiv = true;
+     }, 10000);
   }
 
   onGearChange(gear: string) {
