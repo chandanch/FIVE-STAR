@@ -51,9 +51,9 @@
     </p>
     <div id="editable" #editable contenteditable="true" 
       class="editable-content" 
-      (focus)="editable.style.color='white'"
-      (paste)="pasteText($event)">
-    </div>
+      (focus)="editable.style.color='white';"
+      (paste)="pasteText($event)"
+      placeholder="Enter the coordinates"></div>
     <button (click)="submitData()">Submit</button>
   </section>
 </article>

@@ -2,6 +2,7 @@ import { Meta } from './model/meta';
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {EngineComponent} from './engine/engine.component';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import { AfterViewInit } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -66,6 +67,10 @@ export class AppComponent implements OnInit {
     this.meta.name = "chan";
     this.meta.description = "dd";
     console.log(this.meta);
+
+     const editable = (<HTMLDivElement>document.getElementById('editable'));
+    // editable.textContent = "Enter Coordinates";
+     editable.classList.add('editable-content');
   }
 
   onGearChange(gear: string) {
