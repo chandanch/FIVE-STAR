@@ -7,6 +7,7 @@ import { GearComponent } from './gear/gear.component';
 import { EngineComponent } from './engine/engine.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { BolderPipe } from './bolder.pipe';
+import { HighlightDirective } from './directives/highlight.directive';
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import { BolderPipe } from './bolder.pipe';
     AppComponent,
     GearComponent,
     EngineComponent,
-    BolderPipe
+    BolderPipe,
+    HighlightDirective
   ],
   imports: [
     BrowserModule,
