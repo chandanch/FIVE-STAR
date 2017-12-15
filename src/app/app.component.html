@@ -49,8 +49,8 @@
       <span *ngIf="cardinalCoordinates.length;">No. of coordinates{{cardinalCoordinates.length}}</span>
       <span *ngIf="!cardinalCoordinates.length;">Add coordinates</span>
     </p>
-    <div id="editable" #editable contenteditable="true" 
-      class="editable-content" 
+    <div id="editable" #editable contenteditable="true"
+      class="editable-content"
       (focus)="editable.style.color='white';"
       (paste)="pasteText($event)"
       placeholder="Enter the coordinates"></div>
@@ -79,5 +79,11 @@
     <div *appUnless="!showDiv">
         <p style="background-color: yellow;">This will appear when the condition is true </p>
     </div>
+  </section>
+  <section>
+    <h3>Built-in Pipes</h3>
+    <p>Today's date is {{todaysDate | date}}</p>
+    <h4>Formatted date:</h4>
+    <p>Today's date is {{todaysDate | date:'dd-MM-yyyy (ww) (EEEE) HH:mm:ss SS aa zz GGGG '}}</p>
   </section>
 </article>

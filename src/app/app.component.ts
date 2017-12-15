@@ -26,6 +26,7 @@ export class AppComponent implements OnInit {
   names2;
   highLightColor = 'green';
   showDiv = false;
+  todaysDate = new Date();
 
   constructor(private fb: FormBuilder) {
     // this.myForm = fb.group()
@@ -91,7 +92,7 @@ export class AppComponent implements OnInit {
     // reset valid and invalid flags
     this.showsuccess = false;
     this.isValidCardinal = true;
-    // split the cardinal coordinates by newline 
+    // split the cardinal coordinates by newline
     const coordinates = value.coordinates.split('\n');
     // iterate through the coordinates to check the validity
     [].forEach.call(coordinates, (coordinate) => {
@@ -146,7 +147,7 @@ export class AppComponent implements OnInit {
    * 2.create a span node 3. add color to span text
    * 3. create a line break node
    * 4. append the span node and line break(so that new nodes are added in new line)
-   * @param inputcoordinate 
+   * @param inputcoordinate
    */
   markValidCoordinates(inputcoordinate) {
     const editable = (<HTMLDivElement>document.getElementById('editable'));
@@ -156,7 +157,7 @@ export class AppComponent implements OnInit {
     const text = document.createTextNode(inputcoordinate);
     span.appendChild(text);
     const br = document.createElement('br');
-    
+
     editable.appendChild(span);
     editable.appendChild(br);
   }
@@ -166,7 +167,7 @@ export class AppComponent implements OnInit {
    * 2.create a span node 3. add color to span text
    * 3. create a line break node
    * 4. append the span node and line break(so that new nodes are added in new line)
-   * @param inputcoordinate 
+   * @param inputcoordinate
    */
   markInvalidCoordinates(inputcoordinate) {
     const editable = (<HTMLDivElement>document.getElementById('editable'));
@@ -184,7 +185,7 @@ export class AppComponent implements OnInit {
 
   /**
    * @desc clear all empty inputs and redundant new line
-   * @param inputCoordinates 
+   * @param inputCoordinates
    */
   cleanupInput(inputCoordinates: Array<string>) {
     for (let i = 0; i < inputCoordinates.length; i++) {
@@ -198,7 +199,7 @@ export class AppComponent implements OnInit {
   pasteText(e) {
     // text.stopPropagation();
      let pastedText;
-    
+
     if ((<any>window).clipboardData && (<any>window).clipboardData.getData) { // IE
       pastedText = (<any>window).clipboardData.getData('Text');
     } else if (e.clipboardData && e.clipboardData.getData) {
@@ -207,7 +208,7 @@ export class AppComponent implements OnInit {
     const editable = (<HTMLDivElement>document.getElementById('editable'));
     console.log(editable.outerText);
     // // editable.innerHTML = editable.outerText+pastedText;
-    // return false; 
+    // return false;
     this.removeHtml();
   }
 
