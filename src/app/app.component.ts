@@ -27,6 +27,7 @@ export class AppComponent implements OnInit {
   highLightColor = 'green';
   showDiv = false;
   todaysDate = new Date();
+  birthDay = new Date(1989, 12, 23);
 
   constructor(private fb: FormBuilder) {
     // this.myForm = fb.group()
