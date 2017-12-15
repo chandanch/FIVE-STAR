@@ -226,4 +226,8 @@ export class AppComponent implements OnInit {
       }
     }, 1);
   }
+
+  addCar(car: string) {
+    console.log(car);
+  }
 }

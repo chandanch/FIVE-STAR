@@ -87,4 +87,10 @@
     <p>Today's date is {{todaysDate | date:'dd-MM-yyyy (ww) (EEEE) HH:mm:ss SS aa zz GGGG '}}</p>
     <p>Birthday: {{birthDay | date: 'dd/MMMM/yyyy (EEEE)' | uppercase}} </p>
   </section>
+  <section>
+    <h3>Change detection</h3>
+    <input type="text" name="change" #car
+      (keyup.enter)="addCar(car.value); car.value=''"
+      placeholder="Add Car">
+  </section>
 </article>
